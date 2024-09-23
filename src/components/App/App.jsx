@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Description from '../Description/Description';
 import Options from '../Options/Options';
 import Feedback from '../Feedback/Feedback';
+import Notification from "../Notification/Notification";
 
 import './App.css';
 
@@ -30,7 +31,7 @@ export default function App() {
   };
   
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-  const positiveFeedback = totalFeedback ? Math.round(((feedback.good + feedback.neutral)/ totalFeedback) * 100) : 0;
+  const positiveFeedback = totalFeedback ? Math.round((feedback.good / totalFeedback) * 100) : 0;
 
   return (
     <>
@@ -39,7 +40,7 @@ export default function App() {
         resetFeedback={resetFeedback}
         totalFeedback={totalFeedback} />
       
-      {totalFeedback > 0 ? (
+      {totalFeedback > 0 ? 
         <Feedback
           good={feedback.good}
           neutral={feedback.neutral}
@@ -47,9 +48,7 @@ export default function App() {
           total={totalFeedback}
           positiveFeedback={positiveFeedback}
         />
-      ) : (
-        <p>No feedback yet</p>
-      )}
+      : <Notification/>}
     </>
   )
 }
