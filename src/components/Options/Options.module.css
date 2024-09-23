@@ -1,0 +1,11 @@
+.options {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.options button {
+  flex: 1;
+  border: 2px solid black;
+  background-color: rgb(233, 233, 233);
+}
